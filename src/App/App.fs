@@ -2,7 +2,6 @@ module Fable.Vue
 open Elmish
 open Elmish.Vue
 open Fable.Helpers.Vue
-open Fable.Import
 
 type Model = { count: int }
 type Msg = Decrease | Increase | Reset
