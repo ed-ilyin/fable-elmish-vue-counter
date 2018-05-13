@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "fable": {
+    "entry": "src/App/App.fsproj"
+  },
+  "scripts": {
+    "postinstall": "dotnet restore",
+    "build": "cd tools && dotnet fable webpack -- -p --config webpack.config.prod.js",
+    "start": "cd tools && dotnet fable webpack-dev-server -- --config webpack.config.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "roll": "cd tools && dotnet fable yarn-run rollup -- -c tools/rollup.config.js"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-preset-env": "1.6.1",
+    "copy-webpack-plugin": "^4.4.1",
+    "fable-loader": "1.1.6",
+    "fable-utils": "1.0.6",
+    "html-webpack-plugin": "2.29.0",
+    "html-webpack-polyfill-io-plugin": "^1.0.0",
+    "rollup": "^0.58.2",
+    "rollup-plugin-fable": "^1.1.1",
+    "vue": "^2.5.16",
+    "vuex": "^3.0.1",
+    "webpack": "3.8.1",
+    "webpack-dev-server": "2.9.4"
+  }
+}
