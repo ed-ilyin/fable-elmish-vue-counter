@@ -19,7 +19,7 @@ let withVue element (program:Elmish.Program<_,_,_,_>) =
                 Render (fun createElement ->
                     let div c = createElement.Invoke (U4.Case1 "div", c)
                     match JsInterop.jsThis<Props>.state with
-                    | None -> U3.Case3 "Пока пусто" |> div
+                    | None -> null
                     | Some (VNodeThunk vNodeThunk) ->
                         match vNodeThunk createElement with
                         | U3.Case1 vNode -> vNode
