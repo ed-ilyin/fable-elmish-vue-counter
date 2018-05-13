@@ -5,33 +5,28 @@ open Fable.Helpers.Vue
 open Fable.Import
 
 type Model = { count: int }
-
-let log (tag: string) (a: 'a) : 'a =
-    do Browser.console.log (tag, a)
-    a
+type Msg = Decrease | Increase | Reset
+let init () = { count = 1 }
 
 let button color text dispatch msg =
     button [
-        Style [ Color color ]
+        Style [ BackgroundColor color; Color "white" ]
         On [ Click <| fun _ -> dispatch msg ]
     ] [ str text ]
 
-type Msg = Decrease | Increase | Reset
 let view model dispatch =
     div [] [
         button "blue" "-" dispatch Decrease
-        string model.count |> str
+        div [] [ string model.count |> str ]
         button "red" "+" dispatch Increase
         button "green" "Reset" dispatch Reset
     ]
 
-let init () = { count = 1 }
-let count model f = { model with count = f model.count 1 }
-
 let update cmd model =
+    let count f = { model with count = f model.count 1 }
     match cmd with
-    | Decrease -> count model (-)
-    | Increase -> count model (+)
+    | Decrease -> count (-)
+    | Increase -> count (+)
     | Reset -> { model with count = 0 }
 
 do Program.mkSimple init update view

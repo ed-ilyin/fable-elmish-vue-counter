@@ -7,6 +7,7 @@ type VNodeThunk =
 
 type CSSProp =
     | Color of string
+    | BackgroundColor of string
 
 type EventHandler =
     | Click of (obj -> unit)
