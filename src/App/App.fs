@@ -16,12 +16,13 @@ let button color text dispatch msg =
         On [ Click <| fun _ -> dispatch msg ]
     ] [ str text ]
 
-type Msg = Decrease | Increase
+type Msg = Decrease | Increase | Reset
 let view model dispatch =
     div [] [
         button "blue" "-" dispatch Decrease
         string model.count |> str
         button "red" "+" dispatch Increase
+        button "green" "Reset" dispatch Reset
     ]
 
 let init () = { count = 1 }
@@ -31,6 +32,7 @@ let update cmd model =
     match cmd with
     | Decrease -> count model (-)
     | Increase -> count model (+)
+    | Reset -> { model with count = 0 }
 
 do Program.mkSimple init update view
     |> Program.withVue "#app"
