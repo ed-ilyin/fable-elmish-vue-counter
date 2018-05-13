@@ -1,14 +1,12 @@
 [<RequireQualifiedAccess>]
 module Elmish.Vue.Program
 open Fable.Core
-open Fable.Import
-open Fable.Helpers.Vue
 open Fable.Core.JsInterop
+open Fable.Helpers.Vue
+open Fable.Import
 
-let[<Import("default","vue")>]vue: Vue.VueConstructorStatic = jsNative
-
-[<Pojo>]
-type Props = { state: VNodeThunk option }
+[<Pojo>] type Props = { state: VNodeThunk option }
+let [<Import("default","vue")>] vue: Vue.VueConstructorStatic = jsNative
 
 let withVue element (program:Elmish.Program<_,_,_,_>) =
     let vm: Vue.VueConstructor<Props> =

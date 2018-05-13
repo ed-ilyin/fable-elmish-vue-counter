@@ -1,4 +1,4 @@
-module Fable.Vue
+module App.Main
 open Elmish
 open Elmish.Vue
 open Fable.Helpers.Vue
